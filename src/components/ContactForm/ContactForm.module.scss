@@ -1,0 +1,151 @@
+@import '../../styles/variables';
+
+.section {
+  background: radial-gradient(circle at 30% 10%, rgba(207, 181, 59, 0.08), transparent 55%),
+    radial-gradient(circle at 70% 90%, rgba(255, 69, 0, 0.06), transparent 60%),
+    $charcoal;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: rgba(136, 146, 176, 0.95);
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.panel {
+  @include glass-panel;
+  border-radius: 14px;
+  padding: 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.06), transparent 55%);
+  pointer-events: none;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: rgba(230, 241, 255, 0.85);
+}
+
+.field input,
+.field textarea {
+  padding: 0.95rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+  color: $white;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(207, 181, 59, 0.45);
+  box-shadow: 0 0 0 4px rgba(207, 181, 59, 0.08);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.submit {
+  padding: 1.1rem 2.2rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.9), rgba(140, 20, 0, 0.95));
+  color: $white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  box-shadow: 0 16px 40px rgba(255, 69, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(255, 69, 0, 0.22);
+  filter: saturate(1.05);
+}
+
+.submit:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.note {
+  color: rgba(136, 146, 176, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  max-width: 420px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .note {
+    max-width: none;
+    text-align: center;
+  }
+}
+

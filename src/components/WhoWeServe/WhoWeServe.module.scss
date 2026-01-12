@@ -1,0 +1,103 @@
+@import '../../styles/variables';
+
+.section {
+  background-color: lighten($charcoal, 5%);
+  position: relative;
+}
+
+.heading {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: $white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+.card {
+  height: 350px;
+  position: relative;
+  cursor: pointer;
+  
+  &:hover {
+    .cardInner {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(207, 181, 59, 0.3);
+    }
+
+    .reflection {
+      transform: translateX(100%) rotate(45deg);
+      transition: transform 0.8s ease;
+    }
+    
+    .iconWrapper {
+      color: $gold;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.cardInner {
+  height: 100%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  color: $steel;
+  margin-bottom: 2rem;
+  transition: all 0.5s ease;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  }
+}
+
+.cardTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: $white;
+}
+
+.cardDesc {
+  color: $steel;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.reflection {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%) rotate(45deg);
+  pointer-events: none;
+  transition: transform 0s;
+}

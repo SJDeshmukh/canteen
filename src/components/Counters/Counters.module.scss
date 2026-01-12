@@ -1,0 +1,100 @@
+@import '../../styles/variables';
+
+.section {
+  background: linear-gradient(180deg, $navy 0%, $charcoal 100%);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: rgba(136, 146, 176, 0.9);
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 2.2rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.value {
+  font-family: $font-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 3.4vw, 3.6rem);
+  letter-spacing: -0.02em;
+  color: $white;
+}
+
+.suffix {
+  font-family: $font-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+  color: $gold;
+  opacity: 0.9;
+}
+
+.label {
+  color: rgba(136, 146, 176, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+}
+
+.sweep {
+  position: absolute;
+  top: -40%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  transform: rotate(25deg);
+  background: linear-gradient(90deg, transparent, rgba(207, 181, 59, 0.12), transparent);
+  opacity: 0.8;
+  transition: left 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .sweep {
+  left: 140%;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,51 @@
+$charcoal: #121212;
+$navy: #0a192f;
+$steel: #8892b0;
+$gold: #cfb53b;
+$white: #e6f1ff;
+$heat: #ff4500;
+$glass: rgba(255, 255, 255, 0.05);
+
+:root {
+  --color-charcoal: #{$charcoal};
+  --color-navy: #{$navy};
+  --color-steel: #{$steel};
+  --color-gold: #{$gold};
+  --color-white: #{$white};
+  --color-heat: #{$heat};
+  --color-glass: #{$glass};
+  
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --shadow-heavy: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  --shadow-glow: 0 0 20px rgba(207, 181, 59, 0.1);
+  
+  --transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+$font-serif: 'Playfair Display', serif;
+$font-sans: 'Inter', sans-serif;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin glass-panel {
+  background: $glass;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-heavy);
+}
+
+@mixin metallic-text {
+  background: linear-gradient(to bottom, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin heat-glow {
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.3);
+}
