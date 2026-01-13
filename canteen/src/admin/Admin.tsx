@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { MealsStore, type MealCategory, type ServingType, type Meal } from '../store/meals';
-import { compressImage } from '../utils/image';
+import { compressImage, dataUrlToBlob } from '../utils/image';
 import { MealCard } from '../components/Meals/MealCard';
 import styles from './Admin.module.scss';
 
@@ -71,15 +71,18 @@ export const Admin: React.FC = () => {
 
   const onPublish = () => {
     if (!canSave) return;
-    MealsStore.add({
-      name: form.name.trim(),
-      category: form.category,
-      description: form.description.trim(),
-      highlights: form.highlights.trim(),
-      serving: form.serving,
-      active: form.active,
-      imageData: form.imageData
-    });
+    const fd = new FormData();
+    fd.append('name', form.name.trim());
+    fd.append('category', form.category);
+    fd.append('description', form.description.trim());
+    fd.append('highlights', form.highlights.trim());
+    fd.append('serving', form.serving);
+    fd.append('active', String(form.active));
+    if (form.imageData) {
+      const blob = dataUrlToBlob(form.imageData);
+      fd.append('image', blob, 'meal.jpg');
+    }
+    MealsStore.addUpload(fd);
     setForm(defaultState);
   };
 

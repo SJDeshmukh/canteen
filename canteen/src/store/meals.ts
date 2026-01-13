@@ -15,8 +15,21 @@ export type Meal = {
 };
 
 type MealUpdate = Partial<Omit<Meal, 'id' | 'createdAt'>> & { id: string };
+type MealDTO = {
+  id: unknown;
+  name: unknown;
+  category: unknown;
+  description: unknown;
+  highlights?: unknown;
+  serving: unknown;
+  active: unknown;
+  image_url?: unknown;
+  created_at?: unknown;
+  updated_at?: unknown;
+};
 
 const STORAGE_KEY = 'canteen_meals';
+const API_BASE = import.meta.env?.VITE_API_BASE ?? 'http://localhost:5000';
 
 const emitter = new EventTarget();
 
@@ -37,6 +50,29 @@ const writeAll = (meals: Meal[]) => {
   emitter.dispatchEvent(new CustomEvent('meals-change', { detail: meals }));
 };
 
+const syncFromServer = async () => {
+  try {
+    const res = await fetch(`${API_BASE}/api/meals`);
+    if (!res.ok) return;
+    const list: unknown = await res.json();
+    const mapped: Meal[] = (Array.isArray(list) ? list : []).map((m: MealDTO) => ({
+      id: String(m.id),
+      name: String(m.name),
+      category: String(m.category) as MealCategory,
+      description: String(m.description),
+      highlights: String(m.highlights ?? ''),
+      serving: String(m.serving) as ServingType,
+      active: Boolean(m.active),
+      imageData: m.image_url ? `${API_BASE}${String(m.image_url)}` : undefined,
+      createdAt: Number(m.created_at ?? Date.now()),
+      updatedAt: Number(m.updated_at ?? Date.now())
+    }));
+    writeAll(mapped);
+  } catch (err) {
+    console.error('syncFromServer failed', err);
+  }
+};
+
 export const MealsStore = {
   list(): Meal[] {
     return readAll().sort((a, b) => b.createdAt - a.createdAt);
@@ -44,35 +80,36 @@ export const MealsStore = {
   byId(id: string): Meal | undefined {
     return readAll().find(m => m.id === id);
   },
-  add(meal: Omit<Meal, 'id' | 'createdAt' | 'updatedAt'>): Meal {
-    const now = Date.now();
-    const record: Meal = {
-      ...meal,
-      id: crypto.randomUUID(),
-      createdAt: now,
-      updatedAt: now
-    };
-    const all = readAll();
-    all.push(record);
-    writeAll(all);
-    return record;
+  async addUpload(form: FormData): Promise<void> {
+    try {
+      const res = await fetch(`${API_BASE}/api/meals`, { method: 'POST', body: form });
+      if (!res.ok) return;
+      await syncFromServer();
+    } catch (err) {
+      console.error('addUpload failed', err);
+    }
   },
-  update(update: MealUpdate): Meal | undefined {
-    const all = readAll();
-    const idx = all.findIndex(m => m.id === update.id);
-    if (idx === -1) return undefined;
-    const next: Meal = {
-      ...all[idx],
-      ...update,
-      updatedAt: Date.now()
-    };
-    all[idx] = next;
-    writeAll(all);
-    return next;
+  async update(update: MealUpdate): Promise<Meal | undefined> {
+    try {
+      const res = await fetch(`${API_BASE}/api/meals/${update.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(update)
+      });
+      if (!res.ok) return undefined;
+      await syncFromServer();
+      return this.byId(update.id);
+    } catch {
+      return undefined;
+    }
   },
-  remove(id: string) {
-    const all = readAll().filter(m => m.id !== id);
-    writeAll(all);
+  async remove(id: string) {
+    try {
+      await fetch(`${API_BASE}/api/meals/${id}`, { method: 'DELETE' });
+      await syncFromServer();
+    } catch (err) {
+      console.error('remove failed', err);
+    }
   },
   subscribe(cb: (meals: Meal[]) => void): () => void {
     const handler = (e: Event) => {
@@ -81,9 +118,9 @@ export const MealsStore = {
     };
     emitter.addEventListener('meals-change', handler as EventListener);
     cb(readAll());
+    syncFromServer();
     return () => {
       emitter.removeEventListener('meals-change', handler as EventListener);
     };
   }
 };
-

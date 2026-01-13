@@ -29,3 +29,17 @@ export const compressImage = (file: File, maxWidth = 1600, quality = 0.82): Prom
   });
 };
 
+export const dataUrlToBlob = (dataUrl: string): Blob => {
+  const parts = dataUrl.split(',');
+  const meta = parts[0];
+  const base64 = parts[1];
+  const mimeMatch = /data:(.*?);base64/.exec(meta);
+  const mime = mimeMatch ? mimeMatch[1] : 'application/octet-stream';
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return new Blob([bytes], { type: mime });
+};
