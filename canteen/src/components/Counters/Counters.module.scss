@@ -15,7 +15,7 @@
 }
 
 .subtitle {
-  color: rgba(136, 146, 176, 0.9);
+  color: $ink;
   max-width: 680px;
   margin: 0 auto;
   font-size: 1.1rem;
@@ -52,7 +52,7 @@
   font-weight: 900;
   font-size: clamp(2.6rem, 3.4vw, 3.6rem);
   letter-spacing: -0.02em;
-  color: $white;
+  color: $ink;
 }
 
 .suffix {
@@ -64,7 +64,7 @@
 }
 
 .label {
-  color: rgba(136, 146, 176, 0.95);
+  color: $ink;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.85rem;
@@ -97,4 +97,3 @@
     grid-template-columns: 1fr;
   }
 }
-

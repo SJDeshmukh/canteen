@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { MealsStore, type MealCategory, type ServingType, type Meal } from '../store/meals';
 import { compressImage } from '../utils/image';
 import { MealCard } from '../components/Meals/MealCard';
@@ -35,11 +36,24 @@ export const Admin: React.FC = () => {
   const [meals, setMeals] = useState(MealsStore.list());
   const [editing, setEditing] = useState<Record<string, Partial<Omit<Meal, 'id' | 'createdAt'>> & { id: string }>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const unsub = MealsStore.subscribe(setMeals);
     return () => unsub();
   }, []);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    gsap.from(Array.from(el.children), {
+      opacity: 0,
+      y: 16,
+      duration: 0.5,
+      stagger: 0.08,
+      ease: 'power2.out'
+    });
+  }, [view, meals.length]);
 
   const canSave = useMemo(() => Boolean(form.name.trim() && form.description.trim()), [form]);
 
@@ -111,20 +125,24 @@ export const Admin: React.FC = () => {
   return (
     <div className={styles.page}>
       <div className={styles.wrap}>
-        <div className={styles.nav}>
-          <button
-            className={`${styles.navBtn} ${view === 'create' ? styles.navActive : ''}`}
-            onClick={() => setView('create')}
-          >
-            Create Meal
-          </button>
-          <button
-            className={`${styles.navBtn} ${view === 'manage' ? styles.navActive : ''}`}
-            onClick={() => setView('manage')}
-          >
-            Manage Recipes
-          </button>
+        <div className={styles.topbar}>
+          <div className={styles.brand}>Canteen Admin</div>
+          <div className={styles.topNav}>
+            <button
+              className={`${styles.topNavBtn} ${view === 'create' ? styles.topNavActive : ''}`}
+              onClick={() => setView('create')}
+            >
+              Create Meal
+            </button>
+            <button
+              className={`${styles.topNavBtn} ${view === 'manage' ? styles.topNavActive : ''}`}
+              onClick={() => setView('manage')}
+            >
+              Manage Recipes
+            </button>
+          </div>
         </div>
+        <div ref={contentRef}>
         {view === 'create' ? (
           <>
             <h1 className={styles.heading}>Meal Management</h1>
@@ -399,6 +417,7 @@ export const Admin: React.FC = () => {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

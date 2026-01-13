@@ -12,6 +12,68 @@
   padding: 0 2rem;
 }
 
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, $surface 0%, rgba(59,170,59,0.06) 100%);
+  border: 1px solid $neutral-border;
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-heavy);
+}
+
+.brand {
+  font-weight: 800;
+  color: $leaf-dark;
+  letter-spacing: -0.01em;
+}
+
+.topNav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.topNavBtn {
+  position: relative;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid $neutral-border;
+  border-radius: 999px;
+  color: $ink;
+  background: $surface-soft;
+  transition: var(--transition-slow);
+}
+
+.topNavBtn::after {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.4rem;
+  height: 2px;
+  background: transparent;
+  transition: var(--transition-slow);
+}
+
+.topNavBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(36,48,36,0.12);
+}
+
+.topNavActive {
+  color: $surface;
+  background: $leaf;
+  border-color: rgba(59,170,59,0.45);
+}
+
+.topNavActive::after {
+  background: rgba(255,255,255,0.6);
+}
+
 .heading {
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: center;
@@ -83,6 +145,12 @@
   border-radius: 10px;
   color: $leaf-dark;
   background: rgba(59,170,59,0.12);
+  transition: var(--transition-slow);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(36,48,36,0.12);
 }
 
 .danger {
@@ -154,6 +222,12 @@
   border-radius: 12px;
   padding: 1rem;
   background: $surface;
+  transition: var(--transition-slow);
+}
+
+.manageRow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(36,48,36,0.12);
 }
 
 .rowHeader {

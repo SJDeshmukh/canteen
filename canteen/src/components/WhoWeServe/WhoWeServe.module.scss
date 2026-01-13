@@ -9,7 +9,7 @@
   font-size: clamp(2.5rem, 4vw, 4rem);
   text-align: center;
   margin-bottom: 4rem;
-  color: $white;
+  color: $ink;
 }
 
 .grid {
@@ -76,11 +76,11 @@
 .cardTitle {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: $white;
+  color: $ink;
 }
 
 .cardDesc {
-  color: $steel;
+  color: $ink;
   line-height: 1.6;
   font-size: 1rem;
 }
