@@ -7,6 +7,7 @@ import { SafetyQuality } from './components/SafetyQuality/SafetyQuality';
 import { Compliance } from './components/Compliance/Compliance';
 import { Counters } from './components/Counters/Counters';
 import { ContactForm } from './components/ContactForm/ContactForm';
+import { MealsShowcase } from './components/Meals/MealsShowcase';
 import styles from './App.module.scss';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
       <main>
         <Hero />
+        <MealsShowcase title="Our Meals" initialCategory="All" />
         <WhoWeServe />
         <ScaleInfrastructure />
         <SafetyQuality />

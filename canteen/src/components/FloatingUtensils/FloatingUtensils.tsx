@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useAmbientMotion } from '../../hooks/useAmbientMotion';
 import { useParallax } from '../../hooks/useParallax';
 import { Spoon, Fork, Ladle, Pan } from './UtensilIcons';
@@ -19,7 +19,7 @@ const FloatingItem: React.FC<FloatingItemProps> = ({
   Icon, size = 40, top, left, depth = 1, rotation = 0, color = 'var(--color-steel)', blur = 0 
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const delay = useMemo(() => Math.random() * 2, []);
+  const delay = 0.3 * depth;
   
   useAmbientMotion(ref, {
     yRange: 15 * depth,
