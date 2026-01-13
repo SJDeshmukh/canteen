@@ -1,4 +1,3 @@
-@use "sass:color";
 @import '../../styles/variables';
 
 .section {
@@ -52,7 +51,7 @@
 }
 
 .text {
-  color: color.adjust($charcoal, $lightness: 20%);
+  color: lighten($charcoal, 20%);
   font-size: 1.2rem;
   margin-bottom: 2rem;
   line-height: 1.6;

@@ -20,8 +20,8 @@ function App() {
 
       <main>
         <Hero />
-        <MealsShowcase title="Our Meals" initialCategory="All" />
         <WhoWeServe />
+        <MealsShowcase title="Menu Showcase" initialCategory="Lunch" />
         <ScaleInfrastructure />
         <SafetyQuality />
         <Compliance />

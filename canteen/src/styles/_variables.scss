@@ -1,10 +1,21 @@
-$charcoal: #121212;
-$navy: #0a192f;
-$steel: #8892b0;
-$gold: #cfb53b;
-$white: #e6f1ff;
-$heat: #ff4500;
-$glass: rgba(255, 255, 255, 0.05);
+$charcoal: #f7faf7;
+$navy: #e8f5e9;
+$steel: #4e5a4f;
+$gold: #fdd835;
+$white: #ffffff;
+$heat: #e53935;
+$glass: rgba(255, 255, 255, 0.75);
+
+$leaf: #3baa3b;
+$leaf-dark: #2f8c2f;
+$carrot: #f58634;
+$tomato: #e53935;
+$beet: #8e24aa;
+$lemon: #ffd54f;
+$ink: #243024;
+$surface: #ffffff;
+$surface-soft: #f9fbf6;
+$neutral-border: rgba(0, 0, 0, 0.08);
 
 :root {
   --color-charcoal: #{$charcoal};
@@ -14,12 +25,22 @@ $glass: rgba(255, 255, 255, 0.05);
   --color-white: #{$white};
   --color-heat: #{$heat};
   --color-glass: #{$glass};
+  --color-leaf: #{$leaf};
+  --color-leaf-dark: #{$leaf-dark};
+  --color-carrot: #{$carrot};
+  --color-tomato: #{$tomato};
+  --color-beet: #{$beet};
+  --color-lemon: #{$lemon};
+  --color-ink: #{$ink};
+  --color-surface: #{$surface};
+  --color-surface-soft: #{$surface-soft};
+  --color-neutral-border: #{$neutral-border};
   
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
   
-  --shadow-heavy: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-  --shadow-glow: 0 0 20px rgba(207, 181, 59, 0.1);
+  --shadow-heavy: 0 18px 30px rgba(36, 48, 36, 0.08);
+  --shadow-glow: 0 0 22px rgba(59, 170, 59, 0.18);
   
   --transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

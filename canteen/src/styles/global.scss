@@ -11,8 +11,8 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  background-color: $charcoal;
-  color: $steel;
+  background-color: $surface-soft;
+  color: $ink;
 }
 
 body {
@@ -23,9 +23,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-serif;
-  color: $white;
-  font-weight: 700;
+  font-family: $font-sans;
+  color: $ink;
+  font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -53,15 +53,15 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: $charcoal;
+  background: $surface-soft;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $steel;
+  background: rgba(36, 48, 36, 0.25);
   border-radius: 4px;
   
   &:hover {
-    background: $gold;
+    background: rgba(36, 48, 36, 0.35);
   }
 }
 
@@ -72,11 +72,12 @@ ul {
 }
 
 .section-padding {
-  padding: 8rem 0;
+  padding: 6rem 0;
 }
 
 .text-gold { color: $gold; }
 .text-heat { color: $heat; }
 .text-white { color: $white; }
+.text-leaf { color: $leaf; }
 
 .uppercase { text-transform: uppercase; letter-spacing: 0.1em; }

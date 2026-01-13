@@ -20,13 +20,7 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
       <div className={styles.inner}>
         <div ref={mediaRef} className={styles.media}>
           {meal.imageData ? (
-            <img
-              className={styles.img}
-              src={meal.imageData}
-              alt={meal.name}
-              loading="lazy"
-              decoding="async"
-            />
+            <img className={styles.img} src={meal.imageData} alt={meal.name} />
           ) : (
             <div className={styles.shadow} />
           )}
@@ -48,3 +42,4 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
     </div>
   );
 };
+

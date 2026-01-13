@@ -1,8 +1,7 @@
-@use "sass:color";
 @import '../../styles/variables';
 
 .section {
-  background: color.adjust($charcoal, $lightness: 3%);
+  background: linear-gradient(180deg, $surface 0%, $surface-soft 100%);
   position: relative;
 }
 
@@ -13,7 +12,7 @@
 
 .title {
   font-size: clamp(2rem, 3.5vw, 3rem);
-  color: $white;
+  color: $ink;
 }
 
 .controls {
@@ -25,28 +24,28 @@
 
 .control {
   padding: 0.5rem 0.9rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid $neutral-border;
   border-radius: 999px;
-  color: $steel;
-  background: rgba(255,255,255,0.03);
+  color: $ink;
+  background: rgba(59,170,59,0.06);
   transition: var(--transition-slow);
 }
 
 .controlActive {
-  color: $white;
-  background: rgba(207,181,59,0.15);
-  border-color: rgba(207,181,59,0.35);
+  color: $leaf-dark;
+  background: rgba(59,170,59,0.18);
+  border-color: rgba(59,170,59,0.35);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
   margin-top: 2rem;
 }
 
 .empty {
-  color: $steel;
+  color: $ink;
   text-align: center;
   padding: 2rem;
 }

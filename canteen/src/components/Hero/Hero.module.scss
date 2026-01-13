@@ -1,4 +1,3 @@
-@use "sass:color";
 @import '../../styles/variables';
 
 .hero {
@@ -7,7 +6,7 @@
   height: 100vh;
   min-height: 700px;
   overflow: hidden;
-  background-color: $charcoal;
+  background: linear-gradient(180deg, $surface 0%, $surface-soft 100%);
   display: flex;
   align-items: center;
 }
@@ -18,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(10, 25, 47, 0.4) 0%, rgba(18, 18, 18, 1) 90%);
+  background: radial-gradient(circle at 50% 50%, rgba(59,170,59,0.08) 0%, rgba(255,255,255,0) 90%);
   z-index: 0;
 }
 
@@ -37,18 +36,17 @@
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: $white;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: $ink;
+  text-shadow: none;
   
   span {
-    @include metallic-text;
-    color: $gold; // Fallback
+    color: $leaf;
   }
 }
 
 .subtitle {
   font-size: clamp(1.1rem, 1.5vw, 1.5rem);
-  color: $steel;
+  color: $ink;
   margin-bottom: 3rem;
   max-width: 600px;
   line-height: 1.6;
@@ -60,10 +58,10 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: $white;
-  background: linear-gradient(135deg, $heat 0%, color.adjust($heat, $lightness: -20%) 100%);
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+  color: $surface;
+  background: linear-gradient(135deg, $leaf 0%, $leaf-dark 100%);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(59,170,59,0.25);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -75,13 +73,13 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
     transition: 0.5s;
   }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.5);
+    box-shadow: 0 10px 28px rgba(59,170,59,0.35);
     
     &::before {
       left: 100%;
@@ -105,7 +103,7 @@
 .mouse {
   width: 30px;
   height: 50px;
-  border: 2px solid $steel;
+  border: 2px solid rgba(36,48,36,0.25);
   border-radius: 15px;
   position: relative;
   
@@ -116,7 +114,7 @@
     transform: translateX(-50%);
     width: 4px;
     height: 8px;
-    background-color: $gold;
+    background-color: $leaf;
     border-radius: 2px;
     animation: scroll 2s infinite;
   }

@@ -1,8 +1,7 @@
-@use "sass:color";
 @import '../../styles/variables';
 
 .section {
-  background-color: color.adjust($charcoal, $lightness: -3%);
+  background-color: darken($charcoal, 3%);
   text-align: center;
 }
 
@@ -29,7 +28,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%; /* Stamp shape */
-  background: radial-gradient(circle, color.adjust($charcoal, $lightness: 5%) 0%, $charcoal 100%);
+  background: radial-gradient(circle, lighten($charcoal, 5%) 0%, $charcoal 100%);
   box-shadow: 
     inset 0 0 20px rgba(0,0,0,0.8),
     0 0 10px rgba(255, 255, 255, 0.05);
