@@ -91,6 +91,25 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero {
+    min-height: 520px;
+  }
+  .textContent {
+    max-width: none;
+  }
+  .title {
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: none;
+  }
+  .cta {
+    width: 100%;
+  }
+}
 .scrollIndicator {
   position: absolute;
   bottom: 2rem;

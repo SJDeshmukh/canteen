@@ -80,4 +80,13 @@ ul {
 .text-white { color: $white; }
 .text-leaf { color: $leaf; }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
 .uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
