@@ -1,7 +1,8 @@
+@use "sass:color";
 @import '../../styles/variables';
 
 .section {
-  background: lighten($charcoal, 3%);
+  background: color.adjust($charcoal, $lightness: 3%);
   position: relative;
 }
 

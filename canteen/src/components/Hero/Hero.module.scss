@@ -1,3 +1,4 @@
+@use "sass:color";
 @import '../../styles/variables';
 
 .hero {
@@ -60,7 +61,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: $white;
-  background: linear-gradient(135deg, $heat 0%, darken($heat, 20%) 100%);
+  background: linear-gradient(135deg, $heat 0%, color.adjust($heat, $lightness: -20%) 100%);
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
   transition: all 0.3s ease;
