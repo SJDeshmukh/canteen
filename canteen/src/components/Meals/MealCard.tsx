@@ -24,7 +24,6 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
           ) : (
             <div className={styles.shadow} />
           )}
-          <div className={styles.shadow} />
         </div>
         <div className={styles.content}>
           <div className={styles.titleRow}>
@@ -42,4 +41,3 @@ export const MealCard: React.FC<Props> = ({ meal }) => {
     </div>
   );
 };
-
